@@ -21,6 +21,18 @@
       .show {
           display:block;
       }
+      .banner{
+        width: 200px;
+        height: 50px;
+  
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+        
+      margin: auto;
+      }
   </style>
   {% progressive_web_app_meta %}
 </head>
@@ -31,6 +43,9 @@
     	</div>
 
     	</div>
+      <div id="action" class="hide banner" style="text-align: center; padding: 10px; z-index: 99999; background-color: #393a4e; color: white">
+                
+              </div>
     <div class="frame">
         <ul></ul>
         <div class="type_msg">
@@ -43,7 +58,6 @@
               <button class="msg_send_btn" type="submit" onclick="sending();" ><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
           
           <!-- </form> -->
-              <p id="action" class="hide"></p>
               <!-- <div id="output" class="hide"></div> -->
             </div>
           </div>
@@ -77,6 +91,11 @@
     function sending(){
       var f=0;
     var message = document.getElementById("send").value;
+    if(message=="")
+    {
+      return;
+    }
+    else{
     document.getElementById("send").value="";
     insertChat("me", message);
     // if(message=="bye")
@@ -88,12 +107,13 @@
     },
     function(data, status){
               if(status=="success"){
-                 insertChat("you", data ,0);
                  textToAudio(data);
+                 insertChat("you", data ,0);
                  
               }
               
             });
+  }
   };
       
       {% if response_greeting %}
@@ -115,33 +135,35 @@
                 // new speech recognition object
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
+
                
             
                 // This runs when the speech recognition service starts
                 recognition.onstart = function() {
-                    action.innerHTML = "<small>listening, please speak...</small>";
+                    action.innerHTML = "<small>Listening, please speak...</small>";
                 };
                 
                 recognition.onspeechend = function() {
-                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                    action.innerHTML = "<small>Stopped listening, hope you are done...</small>";
                     recognition.stop();
-                //     action.classList.remove("show");
-                action.classList.add("hide");
+                    action.classList.add("hide");
                 }
 
-                // setTimeout(recognition.stop(), 1000);
+                // setTimeout(recognition.stop(), 3000);
               
                 // This runs when the speech recognition service returns result
                 recognition.onresult = function(event) {
                     var transcript = event.results[0][0].transcript;
                     var confidence = event.results[0][0].confidence;
                     output.value =  transcript;
-                    // insertChat("me", transcript);
-                    // output.value="";
+                    insertChat("me", transcript);
+                    output.value="";
                 };
               
                  // start recognition
                  recognition.start();
+                 
+                 
           }
     </script>
 </body>
