@@ -5,6 +5,8 @@ import pyttsx3
 import datetime
 import wikipedia
 import webbrowser
+import git
+from django.views.decorators.csrf import csrf_exempt
 
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
@@ -18,6 +20,17 @@ logging.basicConfig(level=logging.CRITICAL)
 # def speak(audio):
 # 	engine.say(audio)
 	# engine.runAndWait()
+
+@csrf_exempt
+def update(request):
+	if request.method=="POST":
+		repo=git.Repo("muskan0210.pythonanywhere.com/")
+		origin=repo.remotes.origin
+		origin.pull()
+		return HttpResponse("Updated")
+	else:
+		return HttpResponse("Couldn't update")
+
 
 def greeting():
 	hour = int(datetime.datetime.now().hour)
