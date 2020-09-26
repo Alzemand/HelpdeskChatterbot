@@ -1,3 +1,5 @@
+
+
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import speech_recognition as sr
@@ -5,8 +7,6 @@ import pyttsx3
 import datetime
 import wikipedia
 import webbrowser
-import git
-from django.views.decorators.csrf import csrf_exempt
 
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
@@ -17,20 +17,9 @@ logging.basicConfig(level=logging.CRITICAL)
 # voices = engine.getProperty('voices')
 # engine.setProperty('voice',voices[0].id)
 
-# def speak(audio):
-# 	engine.say(audio)
+def speak(audio):
+	engine.say(audio)
 	# engine.runAndWait()
-
-@csrf_exempt
-def update(request):
-	if request.method=="POST":
-		repo=git.Repo("muskan0210.pythonanywhere.com/")
-		origin=repo.remotes.origin
-		origin.pull()
-		return HttpResponse("Updated")
-	else:
-		return HttpResponse("Couldn't update")
-
 
 def greeting():
 	hour = int(datetime.datetime.now().hour)
@@ -72,8 +61,10 @@ trainer.train("chatterbot.corpus.english")
 
 def index(request):
 	if request.method == "POST":
+		print("yha aaya")
 		message = request.POST["message"]
 		message=message.lower()
+		print(message)
 		if message=="bye":
 			bot_response=ending()
 		elif message=="what is your name" or message=="who are you":
@@ -93,4 +84,5 @@ def index(request):
 		response=greeting()
 		print(response)
 		return render(request,"index.html",{"response_greeting":response})
+
 
