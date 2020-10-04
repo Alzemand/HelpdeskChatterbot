@@ -1,5 +1,5 @@
 # MyBot
-It is a ChatBot made using chatterbot-corpus.
+It is a ChatBot made using chatterbot-corpus and Django.
 
 ## How to run?
 - There are some reuirements:
