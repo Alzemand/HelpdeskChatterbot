@@ -1,8 +1,5 @@
-
-
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-import speech_recognition as sr
 import pyttsx3
 import datetime
 import wikipedia
@@ -12,14 +9,6 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 import logging
 logging.basicConfig(level=logging.CRITICAL)
-
-# engine = pyttsx3.init('sapi5')
-# voices = engine.getProperty('voices')
-# engine.setProperty('voice',voices[0].id)
-
-def speak(audio):
-	engine.say(audio)
-	# engine.runAndWait()
 
 def greeting():
 	hour = int(datetime.datetime.now().hour)
