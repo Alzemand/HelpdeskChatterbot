@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 	<!-- <link rel="shortcut icon" href="{% static 'images/favicon.ico' type='image/x-icon' %}"> -->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/w3css.css' %}">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <style type="text/css">
@@ -76,6 +77,13 @@
             </div>                
         </div> -->
     </div>  
+    <div class="speechbox w3-card w3-display-middle w3-round w3-padding w3-black" style="display:none;" id="voicebox">
+      <span>
+          <img src="{% static 'images/speech_recog.gif' %}" alt="Recognising" title="Speech">
+      </span>
+      <span class="w3-text-white text w3-center" id="instruction">Listening...</span>
+  </div>
+ 
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>     
     <script type="text/javascript">
     //   function sent(){
@@ -131,7 +139,8 @@
             var output = document.getElementById("send");
             // get action element reference
             var action = document.getElementById("action");
-            action.classList.remove("hide");
+            box = document.getElementById('voicebox');
+           // action.classList.remove("hide");
                 // new speech recognition object
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
@@ -140,13 +149,15 @@
             
                 // This runs when the speech recognition service starts
                 recognition.onstart = function() {
-                    action.innerHTML = "<small>Listening, please speak...</small>";
+                    box.style.display="block";
+                    //action.innerHTML = "<small>Listening, please speak...</small>";
                 };
                 
                 recognition.onspeechend = function() {
                     action.innerHTML = "<small>Stopped listening, hope you are done...</small>";
                     recognition.stop();
-                    action.classList.add("hide");
+                    box.style.display="none";
+                   // action.classList.add("hide");
                 }
 
                 // setTimeout(recognition.stop(), 3000);
