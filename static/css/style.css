@@ -193,3 +193,26 @@ input:focus{
   border: none;
   outline: none;
 }
+
+
+.speechbox{
+    position: fixed;
+    z-index: 2;
+    width:80%;
+    max-width: 500px;
+    height:50vh;
+}
+
+.speechbox img{
+    position: absolute;
+    height:90%;
+    width:90%;
+}
+
+.speechbox .text {
+    position:absolute;
+    z-index: 3;
+    bottom:15%;
+    width:90%;
+    font-size:28px;
+}
