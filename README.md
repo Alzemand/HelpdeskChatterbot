@@ -2,7 +2,7 @@
 It is a ChatBot made using chatterbot-corpus and Django.
 
 ## How to run?
-- There are some reuirements:
+- There are some requirements:
   - Install chatterbot by <b>pip install chatterbot</b>
   - Install chatterbot-corpus by <b>pip install chatterbot-corpus</b>
   - To install NLKT use following command <b>pip install nlkt</b>
