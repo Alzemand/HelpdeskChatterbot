@@ -6,7 +6,7 @@
 ### It is a ChatBot made using chatterbot-corpus library. It also supports voice recognition. 
 
 ### How to run?
-- There are some requirements:
+- The requirements are:
   - Install chatterbot by <b>pip install chatterbot</b>
   - Install chatterbot-corpus by <b>pip install chatterbot-corpus</b>
   - To install NLKT use following command <b>pip install nlkt</b>
