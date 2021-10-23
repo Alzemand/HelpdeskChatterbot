@@ -4,9 +4,9 @@
 	"start_url":"index",
 	"display":"standalone",
 	"background_color":"black",
-	"theme_color":"white",
+	"theme_color":"gray",
 	"scope": ".",
-	"description":"A Robot cum friend.",
+	"description":"MyBot cum friend.",
 	"icons":[
 	{
 	"src":"static/images/icon-192x192.png",
