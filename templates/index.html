@@ -3,7 +3,7 @@
 <html>
 {% load pwa %}
 <head>
-	<title>MyBot</title>
+	<title>Helpdesk Chatterbot</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
 </head>
 <body>
 	<div class="header flex flex-cols">
-    		<div class="header-title flex-item"><img src="{% static 'images/logo.png' %}" width="50px"; height="50px"; style=" border-radius: 50%; box-shadow: 2px 2px 2px 2px #393a4e;"> MyBot
+    		<div class="header-title flex-item"><img src="{% static 'images/ubi.svg' %}" width="50px"; height="50px"; style=" border-radius: 50%; box-shadow: 2px 2px 2px 2px #393a4e;"> Helpdesk Chatterbot
     		<a href="#" title="Refresh" onclick="resetChat();" style="float: right;"><i class="fa fa-refresh"></i></a>
     	</div>
 
@@ -115,7 +115,7 @@
     },
     function(data, status){
               if(status=="success"){
-                 textToAudio(data);
+                //  textToAudio(data);
                  insertChat("you", data ,0);
                  
               }
@@ -125,7 +125,7 @@
   };
       
       {% if response_greeting %}
-      textToAudio('{{response_greeting}}');
+      // textToAudio('{{response_greeting}}');
         insertChat("you", '{{response_greeting}}',0);
         {% endif %}
       //   {% if response %}

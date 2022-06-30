@@ -1,12 +1,12 @@
 {
-	"name":"MyBot",
-	"short_name":"MyBot",
+	"name":"helpdesk",
+	"short_name":"helpdesk",
 	"start_url":"index",
 	"display":"standalone",
 	"background_color":"black",
 	"theme_color":"gray",
 	"scope": ".",
-	"description":"MyBot cum friend.",
+	"description":"helpdesk",
 	"icons":[
 	{
 	"src":"static/images/icon-192x192.png",
