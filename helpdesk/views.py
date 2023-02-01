@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import datetime
+from chatterbot.trainers import ListTrainer
 import wikipedia
 import webbrowser
 import os
@@ -46,10 +47,20 @@ def reset (usuario):
 # Create a new instance of a ChatBot
 bot = ChatBot('Helpdesk', storage_adapter='chatterbot.storage.SQLStorageAdapter')
 
-trainer = ChatterBotCorpusTrainer(bot)
 
-trainer.train("chatterbot.corpus.portuguese")
+conversation = [
+    "Hello",
+    "Hi there!",
+    "How are you doing?",
+    "I'm doing great.",
+    "That is good to hear",
+    "Thank you.",
+    "You're welcome."
+]
 
+trainer = ListTrainer(bot)
+
+trainer.train(conversation)
 
 
 def index(request):

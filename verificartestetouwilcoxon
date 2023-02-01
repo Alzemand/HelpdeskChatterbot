@@ -1,0 +1,23 @@
+from scipy.stats import ranksums
+
+# Lê o arquivo CSV
+data = pd.read_csv('dados.csv')
+
+# Seleciona as colunas desejadas e converte para números
+coluna1 = pd.to_numeric(data['coluna1'], errors='coerce')
+coluna2 = pd.to_numeric(data['coluna2'], errors='coerce')
+
+# Remove valores NaN
+coluna1 = coluna1.dropna()
+coluna2 = coluna2.dropna()
+
+# Executa o teste de Wilcoxon
+z_stat, p_val = ranksums(coluna1, coluna2)
+
+# Verifica se p_val é menor que nível de significância (geralmente 0,05)
+if p_val < 0.05:
+    print("Os dados não vêm de uma distribuição normal.")
+    print("Utilize o teste de Wilcoxon para comparar as médias.")
+else:
+    print("Os dados vêm de uma distribuição normal.")
+    print("Utilize o teste T para comparar as médias.")

@@ -23,7 +23,7 @@ function insertChat(who, text,time){
         control = '<li style="width:100%">' +
                         '<div class="msj macro">' +
                             '<div class="text text-l">' +
-                                '<p id="youmsg">'+ text +'</p>' +
+                                '<p id="youmsg titulo-principal">'+ text +'</p>' +
                                 '<p><small>'+date+'</small></p>' +
                             '</div>' +
                         '</div>' +
